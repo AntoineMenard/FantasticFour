@@ -74,7 +74,7 @@ public class ConnexionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String log = request.getParameter("idClient");
+        String log = request.getParameter("username");
         String mdp = request.getParameter("mdp");
         
         try {
