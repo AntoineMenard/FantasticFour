@@ -30,7 +30,7 @@
     <body>
         <div class="text-center">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">ACCUEIL</a>
+                <a class="navbar-brand" href="home">ACCUEIL</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -44,12 +44,12 @@
                                 CONSEILLERS
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Créer un conseiller</a>
-                                <a class="dropdown-item" href="#">Consulter compte des consillers</a>
+                                <a class="dropdown-item" href="creationconseiller">Créer un conseiller</a>
+                                <a class="dropdown-item" href="listeconseiller">Consulter compte des consillers</a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="" >HISTORIQUE DE CONNEXION</a>
+                            <a class="nav-link" href="historiqueconseiller" >HISTORIQUE DE CONNEXION</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
@@ -60,5 +60,27 @@
                 </div>
             </nav>
         </div>
+        
+        <form action="" method="POST">
+            <div  class="form-group" >
+                Nom 
+                <input required ="" type="text" name="nomUser" class="form-control"  placeholder="nom">
+            </div>                                
+            <div  class="form-group" >
+                Prénom 
+                <input required ="" type="text" name="prenomUser" class="form-control"  placeholder="prenom">
+            </div>
+            <div  class="form-group" >
+                Adresse 
+                <input required ="" type="text" name="adresseUser" class="form-control"  placeholder="adresse">
+            </div>
+            <div  class="form-group" >
+                Mail 
+                <input required ="" type="text" name="mailUser" class="form-control"  placeholder="email">
+            </div>
+                                         
+            <button type="submit" class="btn btn-primary btn-block font--bold ">Créer le conseiller</button>   
+        </form>
+        
     </body>
 </html>

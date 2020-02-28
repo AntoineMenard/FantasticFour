@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author esic
  */
-@WebServlet(name = "messagerieServlet", urlPatterns = {"/mesaagerie"})
+@WebServlet(name = "messagerieServlet", urlPatterns = {"/messagerie"})
 public class MessagerieServlet extends HttpServlet {
 
     /**
@@ -58,7 +58,7 @@ public class MessagerieServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher("WEB-INF/messagerieClient.jsp").forward(request, response);
     }
 
     /**
@@ -72,7 +72,7 @@ public class MessagerieServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("messagerieClient.jsp").forward(request, response);
+        
     }
 
     /**
