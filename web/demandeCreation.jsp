@@ -62,7 +62,7 @@
                                     Telephone 
                                     <input required ="" type="text" name="nomUser" class="form-control" placeholder ="numéro de téléphone"  >
                                 </div>                               
-                                <button type="submit" class="btn btn-primary btn-block font--bold ">Envoyer demande </button>   
+                                <button type="submit" class="btn btn-primary btn-block font--bold ">Envoyer demande</button>   
                             </form>
 
 
