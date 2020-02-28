@@ -60,27 +60,45 @@
                 </div>
             </nav>
         </div>
-        
-        <form action="" method="POST">
-            <div  class="form-group" >
-                Nom 
-                <input required ="" type="text" name="nomUser" class="form-control"  placeholder="nom">
-            </div>                                
-            <div  class="form-group" >
-                Prénom 
-                <input required ="" type="text" name="prenomUser" class="form-control"  placeholder="prenom">
+
+        <br> <br>
+        <div class="row">
+            <div class = "col-sm-2"></div>
+
+            <div class="col-sm-8">
+                <div class="card">
+                    <div class = "card-header cardHeaderPerso">
+                        <h3 class="text-center">Remplissez le formulaire pour créer un conseiller</h3>  
+
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <form action="" method="POST">
+                                <div  class="form-group" >
+                                    Nom 
+                                    <input required ="" type="text" name="nomUser" class="form-control"  placeholder="nom">
+                                </div>                                
+                                <div  class="form-group" >
+                                    Prénom 
+                                    <input required ="" type="text" name="prenomUser" class="form-control"  placeholder="prenom">
+                                </div>
+                                <div  class="form-group" >
+                                    Adresse 
+                                    <input required ="" type="text" name="adresseUser" class="form-control"  placeholder="adresse">
+                                </div>
+                                <div  class="form-group" >
+                                    Email 
+                                    <input required ="" type="text" name="mailUser" class="form-control"  placeholder="email">
+                                </div>
+                                                            
+                                <button type="submit" class="btn btn-primary btn-block font--bold ">Créer un conseiller</button>   
+                            </form>                            
+
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div  class="form-group" >
-                Adresse 
-                <input required ="" type="text" name="adresseUser" class="form-control"  placeholder="adresse">
-            </div>
-            <div  class="form-group" >
-                Mail 
-                <input required ="" type="text" name="mailUser" class="form-control"  placeholder="email">
-            </div>
-                                         
-            <button type="submit" class="btn btn-primary btn-block font--bold ">Créer le conseiller</button>   
-        </form>
-        
+        </div>
+
     </body>
 </html>

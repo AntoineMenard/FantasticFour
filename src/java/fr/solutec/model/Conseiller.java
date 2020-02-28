@@ -12,6 +12,7 @@ package fr.solutec.model;
 public class Conseiller {
     
     private String idConseiller;
+    private String mdp;
     private String nom;
     private String prenom;
     private String mail;
@@ -21,8 +22,9 @@ public class Conseiller {
     public Conseiller() {
     }
 
-    public Conseiller(String idConseiller, String nom, String prenom, String mail, int statut, String photo) {
+    public Conseiller(String idConseiller, String mdp, String nom, String prenom, String mail, int statut, String photo) {
         this.idConseiller = idConseiller;
+        this.mdp = mdp;
         this.nom = nom;
         this.prenom = prenom;
         this.mail = mail;
@@ -76,6 +78,14 @@ public class Conseiller {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public String getMdp() {
+        return mdp;
+    }
+
+    public void setMdp(String mdp) {
+        this.mdp = mdp;
     }
     
     
