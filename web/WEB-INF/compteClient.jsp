@@ -29,13 +29,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                <c:forEach items = "${comptes}" var = "c">
+                <c:forEach items = "${comptesutilisateur}" var = "c">
                     <tr>
-                        <td class="align-center">${c.idcomtpe}</td>
+                        <td class="align-center">${c.idcompte}</td>
                         <td class="align-center">${c.solde}</td>
                         <td class="align-center">${c.decouvertpermis}</td>
-                        <td><button class="btn btn-primary align-center btnConnex"  ><i class="fas fa-pen"></i></button></td>
-                        <td><button class="btn btn-primary align-center btnConnex"  >
+                        <td><button class="btn btn-primary align-center "  ><i class="fas fa-pen"></i></button></td>
+                        <td><button class="btn btn-primary align-center "  >
                                 <i class="fas fa-times"></i></button></td>
 
                     </tr>
