@@ -5,6 +5,8 @@
  */
 package fr.solutec.servlet;
 
+import fr.solutec.dao.ConseillerDao;
+import fr.solutec.model.Conseiller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -72,7 +74,29 @@ public class creationConseillerServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        String mdp = request.getParameter("mdp");
+        String nom = request.getParameter("nom");
+        String prenom = request.getParameter("prenom");
+        String mail = request.getParameter("mail");
+        String photo = null;
+        String log = null;
+        
+        try {
+
+            Conseiller c = new Conseiller(0, mdp, nom, prenom, mail, 0, photo, log) ;
+            ConseillerDao.insertConseiller(c);
+            request.setAttribute("bienCree", "Le conseiller a bien été créé");
+            response.sendRedirect("creationconseiller");
+            
+            
+        } catch (Exception e) {
+            PrintWriter out = response.getWriter();
+            out.println(e.getMessage());
+        }
+        
+        
+        
     }
 
     /**
