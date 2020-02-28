@@ -21,7 +21,7 @@ public class ConseillerDao {
         throws SQLException{
         Conseiller u = null;
         
-        String sql = "select * from admin where Login=? and mdp=?";
+        String sql = "select * from conseiller where login=? and mdp=?";
         
         Connection connexion = AccessDb.getConnexion();
         
