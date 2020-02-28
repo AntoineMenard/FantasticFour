@@ -86,7 +86,7 @@ public class ConnexionServlet extends HttpServlet {
             Client cl = ClientDao.getByLogAndPass(log, mdp);
             Conseiller co = ConseillerDao.getByLogAndPass(log, mdp);
             Admin ad = AdminDao.getByLogAndPass(log, mdp);
-            String testco = log.substring(0, 2);
+
             if(cl!=null || co!=null || ad!=null){
                 if (log.substring(0, 2).equals("Cl")){
                     request.getSession(true).setAttribute("client", cl);

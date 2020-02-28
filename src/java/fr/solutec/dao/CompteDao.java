@@ -19,28 +19,28 @@ import java.util.ArrayList;
  * @author esic
  */
 public class CompteDao {
-    
-    
-        public static ArrayList<Compte>  getAllCompte(String id)
-        throws SQLException{
+
+    public static ArrayList<Compte> getAllComptebyId(int id)
+            throws SQLException {
         ArrayList<Compte> comptes = new ArrayList<Compte>();
+
+        String sql = "SELECT * FROM compte where client_idclient= ?";
+        Connection connexion = AccessDb.getConnexion();
+
+        PreparedStatement st = connexion.prepareStatement(sql);
+        st.setInt(1, id);
         
-        String sql = "SELECT * FROM compte where id = ?";
-            Connection connexion = AccessDb.getConnexion();          
-          
-            PreparedStatement st = connexion.prepareStatement(sql);
-            st.setString(1, id);     
-            ResultSet rs = st.executeQuery(sql);
-        
-        while (rs.next()){
+        ResultSet rs = st.executeQuery();
+
+        while (rs.next()) {
             Compte c = new Compte();
             c.setIdcompte(rs.getInt("idcompte"));
             c.setIdclient(rs.getInt("client_idclient"));
             c.setSolde(rs.getDouble("solde"));
             c.setDecouvertpermis(rs.getInt("decouvert"));
             comptes.add(c);
-            }
-                
+        }
+
         return comptes;
     }
 }
