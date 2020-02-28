@@ -92,6 +92,7 @@ public class ConnexionServlet extends HttpServlet {
             Conseiller co = ConseillerDao.getByLogAndPass(log, mdp);
             Admin ad = AdminDao.getByLogAndPass(log, mdp);
 
+
             String testco = log.substring(0, 2);
             if (cl != null || co != null || ad != null) {
                 if (log.substring(0, 2).equals("Cl")) {
@@ -102,6 +103,7 @@ public class ConnexionServlet extends HttpServlet {
                         if (log.substring(0, 2).equals("Cl")) {
 
                             request.getSession(true).setAttribute("client", cl);
+                            HistoriqueConnexionDao.insertHistorique(hc);
 
                             request.getRequestDispatcher("WEB-INF/menuClient.jsp").forward(request, response);
                         } else if (log.substring(0, 2).equals("Co")) {
