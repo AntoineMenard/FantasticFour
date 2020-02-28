@@ -1,6 +1,6 @@
 <%-- 
-    Document   : menuAdmin
-    Created on : 28 févr. 2020, 11:23:13
+    Document   : messagerieConseiller
+    Created on : 28 févr. 2020, 11:52:32
     Author     : esic
 --%>
 
@@ -11,7 +11,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Home</title>
+        <title>Messagerie</title>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet"
               href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
@@ -39,22 +39,19 @@
 
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                CONSEILLERS
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="creationconseiller">Créer un conseiller</a>
-                                <a class="dropdown-item" href="listeconseiller">Consulter compte des consillers</a>
-                            </div>
+                        <li class="nav-item" >
+                            <a class="nav-link" href = "" >PROFIL</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="historiqueconnexion" >HISTORIQUE DE CONNEXION</a>
+                            <a class="nav-link" href="" >CLIENTS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="" >MESSAGERIE</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item ">
-                            <button type="button" class="btn btn-danger" onclick="location.href = 'deconnexion'">DECONNEXION</button>    
+                            <button type="button" class="btn btn-danger" onclick="location.href='deconnexion'">DECONNEXION</button>    
                         </li>
                     </ul>
                 </div>

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : menuAdmin
-    Created on : 28 févr. 2020, 11:23:13
+    Document   : consultationConseiller
+    Created on : 28 févr. 2020, 11:56:08
     Author     : esic
 --%>
 
@@ -11,7 +11,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Home</title>
+        <title>Conseillers</title>
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet"
               href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
@@ -44,12 +44,12 @@
                                 CONSEILLERS
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="creationconseiller">Créer un conseiller</a>
-                                <a class="dropdown-item" href="listeconseiller">Consulter compte des consillers</a>
+                                <a class="dropdown-item" href="#">Créer un conseiller</a>
+                                <a class="dropdown-item" href="#">Consulter compte des consillers</a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="historiqueconnexion" >HISTORIQUE DE CONNEXION</a>
+                            <a class="nav-link" href="" >HISTORIQUE DE CONNEXION</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">

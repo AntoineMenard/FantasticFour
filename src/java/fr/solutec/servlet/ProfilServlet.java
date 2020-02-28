@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author esic
  */
-@WebServlet(name = "menuClientServlet", urlPatterns = {"/menuclient"})
-public class menuClientServlet extends HttpServlet {
+@WebServlet(name = "profilServlet", urlPatterns = {"/profil"})
+public class ProfilServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +37,10 @@ public class menuClientServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet menuClientServlet</title>");            
+            out.println("<title>Servlet profilServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet menuClientServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet profilServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,7 +58,7 @@ public class menuClientServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/menuClient.jsp").forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -72,7 +72,7 @@ public class menuClientServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher("profilClient.jsp").forward(request, response);
     }
 
     /**

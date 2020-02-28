@@ -40,13 +40,13 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item" >
-                            <a class="nav-link" href = "" >PROFIL</a>
+                            <a class="nav-link" href = "profil" >PROFIL</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="" >CONSULTER COMPTE</a>
+                            <a class="nav-link" href="compteclient" >CONSULTER COMPTE</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="" >MESSAGERIE</a>
+                            <a class="nav-link" href="messagerie" >MESSAGERIE</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
