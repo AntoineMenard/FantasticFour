@@ -5,6 +5,8 @@
  */
 package fr.solutec.servlet;
 
+import fr.solutec.dao.CompteDao;
+import fr.solutec.model.Compte;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +14,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -58,7 +62,18 @@ public class compteClientServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        try {
+            
+        String id = request.getParameter("username");
+        ArrayList<Compte> comptes = CompteDao.getAllCompte(id);
+        request.setAttribute("comptesutilisateur", comptes);             
         request.getRequestDispatcher("WEB-INF/compteClient.jsp").forward(request, response);
+        
+        } catch (Exception e) {
+            PrintWriter out = response.getWriter();
+            out.println(e.getMessage());
+        }
+
     }
 
     /**
