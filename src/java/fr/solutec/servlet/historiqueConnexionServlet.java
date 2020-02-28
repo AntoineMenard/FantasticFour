@@ -5,8 +5,13 @@
  */
 package fr.solutec.servlet;
 
+import fr.solutec.dao.ConseillerDao;
+import fr.solutec.dao.HistoriqueConnexionDao;
+import fr.solutec.model.Conseiller;
+import fr.solutec.model.HistoriqueConnexion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -58,8 +63,35 @@ public class historiqueConnexionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/historiqueConnexion.jsp").forward(request, response);
+        try {
+            
+            //HttpSession session = request.getSession(true);
+            //Conseiller c = (Conseiller) session.getAttribute("userEnSession");
+            
+            //if (c != null) {
+            
+            List<HistoriqueConnexion> historique = HistoriqueConnexionDao.getAllHistorique();
+            request.setAttribute("historique", historique);
+            request.getRequestDispatcher("WEB-INF/historiqueConnexion.jsp").forward(request, response);
+            
+            //}
+        
+        //else {
+            //request.setAttribute("msg", "Tu n'as pas le droit!!");
+            //request.getRequestDispatcher("index.jsp").forward(request, response);
+            
+        //}
+        
+ 
+        } catch (Exception e) {
+            
+            PrintWriter out = response.getWriter();
+            out.println(e.getMessage());
+        
+        } 
+        
     }
+    
 
     /**
      * Handles the HTTP <code>POST</code> method.
