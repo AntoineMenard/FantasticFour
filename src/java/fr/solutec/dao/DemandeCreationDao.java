@@ -5,6 +5,7 @@
  */
 package fr.solutec.dao;
 
+
 import fr.solutec.model.DemandeCreation;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,21 +17,21 @@ import java.sql.SQLException;
  */
 public class DemandeCreationDao {
     
-public static void InsertDemandeCreation()
+public static void InsertDemandeCreation(DemandeCreation d)
         throws SQLException{ 
         
-        String sql = "INSERT INTO DEMANDEINSCRIPTION (mail, nom, prenom, adresse, mail) VALUES (?,?,?,?,?)";
-        /*Connection connexion = AccessDb.getConnection();
+        String sql = "INSERT INTO DEMANDEINSCRIPTION (mail, nom, prenom, adresse, tel) VALUES (?,?,?,?,?)";
+        Connection connexion = AccessDb.getConnexion();
         
         PreparedStatement requete = connexion.prepareStatement(sql);
-        requete.setString(1, d.getNom());
-        requete.setString(2, d.getPrenom());
-        requete.setString(3, d.getAdresse());
-        requete.setString(4, d.getMail());
+        requete.setString(1, d.getMail());
+        requete.setString(2, d.getNom());
+        requete.setString(3, d.getPrenom());
+        requete.setString(4, d.getAdresse());
         requete.setString(5, d.getTel());
         
         
-        requete.execute();*/
+        requete.execute();
 }
         
     }
