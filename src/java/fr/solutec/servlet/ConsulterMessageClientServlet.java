@@ -5,6 +5,9 @@
  */
 package fr.solutec.servlet;
 
+import fr.solutec.dao.MessageClientDao;
+import fr.solutec.model.Client;
+import fr.solutec.model.Message;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -12,6 +15,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -59,12 +64,18 @@ public class ConsulterMessageClientServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        try {
-            
-        } catch (Exception e) {
-        }
+        try {           
+            Client cli = (Client) request.getSession(true).getAttribute("client");
+        int id = cli.getIdClient();
+        ArrayList<Message> messages = MessageClientDao.getMessagebyId(id);
+        request.setAttribute("messagesclient", messages);   
+        
         request.getRequestDispatcher("WEB-INF/consulterMessageClient.jsp").forward(request, response);
-
+        
+        } catch (Exception e) {
+            PrintWriter out = response.getWriter();
+            out.println(e.getMessage());
+        }
     }
 
     /**

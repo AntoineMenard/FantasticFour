@@ -20,9 +20,10 @@ public class MessageClientDao {
     
         public static ArrayList<Message> getMessagebyId(int id)
             throws SQLException {
+            
         ArrayList<Message> messages = new ArrayList<Message>();
 
-        String sql = "SELECT * FROM message where client_idclient= ? order by date desc";
+        String sql = "SELECT * FROM message where client_idclient= ? ";
         Connection connexion = AccessDb.getConnexion();
 
         PreparedStatement st = connexion.prepareStatement(sql);
@@ -37,7 +38,7 @@ public class MessageClientDao {
             m.setDate(rs.getDate("date"));
             m.setMessage(rs.getString("message"));
             m.setIdConseiller(rs.getString("conseiller_idconseiller"));
-            
+            messages.add(m);
         }
 
         return messages;
