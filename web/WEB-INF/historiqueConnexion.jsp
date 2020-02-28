@@ -3,7 +3,7 @@
     Created on : 28 févr. 2020, 11:56:35
     Author     : esic
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -60,5 +60,47 @@
                 </div>
             </nav>
         </div>
+        
+         <br>
+
+        <div class="container"> 
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">NOM</th>
+                                <th class="text-center">PRENOM</th>
+                                <th class="text-center">DATE</th>
+                                <th class="text-center">ID CLIENT</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${historique}" var="h">
+                                <tr>
+                                    <td class="text-center">${h.idhistoriqueConnexion}</td>
+                                    <td class="text-center">${h.nom}</td>
+                                    <td class="text-center">${h.prenom}</td>
+                                    <td class="text-center">${h.date}</td>
+                                    <td class="text-center">${h.client_idclients}</td>
+                    
+                                </tr>
+
+                            </c:forEach>
+                        </tbody>
+                    </table>
+
+
+                </div>
+
+            </div>
+  
+            
+        </div>
+        
+        
+        
     </body>
 </html>

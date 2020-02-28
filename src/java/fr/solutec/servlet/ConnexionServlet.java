@@ -8,11 +8,16 @@ package fr.solutec.servlet;
 import fr.solutec.dao.AdminDao;
 import fr.solutec.dao.ClientDao;
 import fr.solutec.dao.ConseillerDao;
+import fr.solutec.dao.HistoriqueConnexionDao;
 import fr.solutec.model.Admin;
 import fr.solutec.model.Client;
 import fr.solutec.model.Conseiller;
+import fr.solutec.model.HistoriqueConnexion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.Instant;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -86,22 +91,38 @@ public class ConnexionServlet extends HttpServlet {
             Client cl = ClientDao.getByLogAndPass(log, mdp);
             Conseiller co = ConseillerDao.getByLogAndPass(log, mdp);
             Admin ad = AdminDao.getByLogAndPass(log, mdp);
+
             String testco = log.substring(0, 2);
             if (cl != null || co != null || ad != null) {
                 if (log.substring(0, 2).equals("Cl")) {
-                    request.getSession(true).setAttribute("client", cl);
-                    request.getRequestDispatcher("WEB-INF/menuClient.jsp").forward(request, response);
-                } else if (log.substring(0, 2).equals("Co")) {
-                    request.getSession(true).setAttribute("conseiller", co);
-                    request.getRequestDispatcher("WEB-INF/menuConseiller.jsp").forward(request, response);
-                } else if (log.substring(0, 2).equals("Ad")) {
-                    request.getSession(true).setAttribute("admin", ad);
-                    request.getRequestDispatcher("WEB-INF/menuAdmin.jsp").forward(request, response);
-                }
 
-            } else {
-                request.setAttribute("msg", "l'identifiant ou le mot de passe est incorrect");
-                request.getRequestDispatcher("index.jsp").forward(request, response);
+                    HistoriqueConnexion hc = new HistoriqueConnexion(0, cl.getNom(), cl.getPrenom(), Timestamp.from(Instant.MIN), cl.getIdClient());
+
+                    if (cl != null || co != null || ad != null) {
+                        if (log.substring(0, 2).equals("Cl")) {
+
+                            request.getSession(true).setAttribute("client", cl);
+
+                            request.getRequestDispatcher("WEB-INF/menuClient.jsp").forward(request, response);
+                        } else if (log.substring(0, 2).equals("Co")) {
+
+                            HistoriqueConnexionDao.insertHistorique(hc);
+                            request.getRequestDispatcher("WEB-INF/menuClient.jsp").forward(request, response);
+                        } else if (log.substring(0, 2).equals("Co")) {
+
+                            request.getSession(true).setAttribute("conseiller", co);
+                            request.getRequestDispatcher("WEB-INF/menuConseiller.jsp").forward(request, response);
+                        } else if (log.substring(0, 2).equals("Ad")) {
+                            request.getSession(true).setAttribute("admin", ad);
+                            request.getRequestDispatcher("WEB-INF/menuAdmin.jsp").forward(request, response);
+                        }
+
+                    } else {
+                        request.setAttribute("msg", "l'identifiant ou le mot de passe est incorrect");
+                        request.getRequestDispatcher("index.jsp").forward(request, response);
+                    }
+
+                }
             }
         } catch (Exception e) {
             PrintWriter out = response.getWriter();

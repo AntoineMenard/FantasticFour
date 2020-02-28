@@ -5,7 +5,8 @@
  */
 package fr.solutec.model;
 
-import java.util.Date;
+import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  *
@@ -15,10 +16,10 @@ public class HistoriqueConnexion {
     private int idhistoriqueConnexion;
     private String nom;
     private String prenom;
-    private Date date;
-    private String client_idclients;
+    private Timestamp date;
+    private int client_idclients;
 
-    public HistoriqueConnexion(int idhistoriqueConnexion, String nom, String prenom, Date date, String client_idclients) {
+    public HistoriqueConnexion(int idhistoriqueConnexion, String nom, String prenom, Timestamp date, int client_idclients) {
         this.idhistoriqueConnexion = idhistoriqueConnexion;
         this.nom = nom;
         this.prenom = prenom;
@@ -54,19 +55,19 @@ public class HistoriqueConnexion {
         this.prenom = prenom;
     }
 
-    public Date getDate() {
+    public Timestamp getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 
-    public String getClient_idclients() {
+    public int getClient_idclients() {
         return client_idclients;
     }
 
-    public void setClient_idclients(String client_idclients) {
+    public void setClient_idclients(int client_idclients) {
         this.client_idclients = client_idclients;
     }
     
