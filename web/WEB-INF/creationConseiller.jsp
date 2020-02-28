@@ -92,15 +92,17 @@
                                 </div>
                                                             
                                 <button type="submit" class="btn btn-primary btn-block font--bold ">Créer un conseiller</button>   
-                            </form>                            
+                            </form>  
+                            
+                            <p >
+
+                                ${msg}
+
+                            </p>
 
                         </div>
                         
-                        <p >
-
-                            ${bienCree}
-
-                        </p>
+                        
                         
                     </div>
                 </div>
