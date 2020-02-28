@@ -3,7 +3,7 @@
     Created on : 28 févr. 2020, 11:56:08
     Author     : esic
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,6 +13,7 @@
 
         <title>Conseillers</title>
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
         <link rel="stylesheet"
               href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
               integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
@@ -60,5 +61,77 @@
                 </div>
             </nav>
         </div>
+        
+        
+        <br>
+
+        <div class="container"> 
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">NOM</th>
+                                <th class="text-center">PRENOM</th>
+                                <th class="text-center">EMAIL</th>
+                                <th class="text-center">STATUT</th>
+                                <th class="text-center">LOGIN</th>
+                                <th class="text-center">EDIT</th>
+                                <th class="text-center">DELETE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${lesconseillers}" var="lc">
+                                <tr>
+                                    <td class="text-center">${lc.idConseiller}</td>
+                                    <td class="text-center">${lc.nom}</td>
+                                    <td class="text-center">${lc.prenom}</td>
+                                    <td class="text-center">${lc.mail}</td>
+                                    <td class="text-center">${lc.statut}</td>
+                                    <td class="text-center">${lc.login}</td>
+                                    <td class="text-center">
+                                        <button class="btn"><i class="material-icons">edit</i></button>
+                                    </td>
+                                    <td class="text-center">
+
+                                        <button class="btn" onclick="idDelete(${lc.idConseiller})"><i style="color:darkred" class="material-icons" >delete</i></button>
+                                    </td>
+
+
+                                </tr>
+
+                            </c:forEach>
+                        </tbody>
+                    </table>
+
+                    <form action='deleteconseiller' method="post" id="myForm">
+
+                        <input type="hidden" id="id" name ="id">
+
+                    </form>
+
+
+                </div>
+
+            </div>
+  
+            
+        </div>
+                    
+        <script>
+
+            function idDelete(idrecup) {
+
+                // console.log("Test test", idrecup);
+                document.querySelector('#id').value = idrecup;
+                document.querySelector("#myForm").submit();
+
+            }
+
+        </script>
+        
+        
     </body>
 </html>

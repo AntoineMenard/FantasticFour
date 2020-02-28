@@ -5,13 +5,18 @@
  */
 package fr.solutec.servlet;
 
+import fr.solutec.dao.ConseillerDao;
+import fr.solutec.model.Conseiller;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -58,7 +63,35 @@ public class listeConseillerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/listeConseiller.jsp").forward(request, response);
+        
+        
+        try {
+            
+            //HttpSession session = request.getSession(true);
+            //Conseiller c = (Conseiller) session.getAttribute("userEnSession");
+            
+            //if (c != null) {
+            
+            List<Conseiller> conseiller = ConseillerDao.getAllConseiller();
+            request.setAttribute("lesconseillers", conseiller);
+            request.getRequestDispatcher("WEB-INF/listeConseiller.jsp").forward(request, response);
+            
+            //}
+        
+        //else {
+            //request.setAttribute("msg", "Tu n'as pas le droit!!");
+            //request.getRequestDispatcher("index.jsp").forward(request, response);
+            
+        //}
+        
+ 
+        } catch (Exception e) {
+            
+            PrintWriter out = response.getWriter();
+            out.println(e.getMessage());
+        
+        } 
+        
     }
 
     /**
