@@ -1,6 +1,6 @@
 <%-- 
-    Document   : compte
-    Created on : 28 févr. 2020, 11:33:01
+    Document   : consulterMessageClient
+    Created on : 28 févr. 2020, 16:32:32
     Author     : esic
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -11,7 +11,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Compte</title>
+        <title>Messagerie</title>
 
     </head>
     <body>
@@ -20,26 +20,27 @@
             <br>
             <div class="row">
                 <div class="col-sm-7">
-                    <h4 >Liste des comptes : </h4> 
+                    <h4 >Boite de réception : </h4> 
                     <table class="table">
                         <thead class="thead-light">
                             <tr>
-                                <th>Numéro de <br>compte</th>
-                                <th class="text-align-center">Solde (€)</th>
-                                <th>Decouvert <br> autorisé(€) </th>
+                                <th>Date</th>
+                                <th class="text-align-center">Envoyé par</th>
+                                <th> zefzfze</th>
                                 
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach items = "${comptesutilisateur}" var = "c">
+                            <c:forEach items = "${messagesclient}" var = "m">
                                 <tr>
-                                    <td class="align-center">${c.idcompte}</td>
-                                    <td class="align-center">${c.solde}</td>
-                                    <td class="align-center">${c.decouvertpermis}</td>
+                                    <td class="align-center">${m.date}</td>
+                                    <td class="align-center">${m.idConseiller}</td>
+                                    <td class="align-center">${m.message}</td>
 
 
                                 </tr>
                             </c:forEach>
+                                    
 
                         </tbody>
                     </table>
@@ -48,6 +49,7 @@
 
 
         </div>
+            
 
 
     </body>
