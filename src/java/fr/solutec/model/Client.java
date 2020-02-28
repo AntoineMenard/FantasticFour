@@ -11,7 +11,7 @@ package fr.solutec.model;
  */
 public class Client {
     
-    private String idClient;
+    private int idClient;
     private String mdp;
     private String nom;
     private String prenom;
@@ -19,12 +19,13 @@ public class Client {
     private String adresse;
     private String tel;
     private String photo;
-    private String idConseiller;
+    private int idConseiller;
+    private String login;
 
     public Client() {
     }
 
-    public Client(String idClient, String mdp, String nom, String prenom, String mail, String adresse, String tel, String photo, String idConseiller) {
+    public Client(int idClient, String mdp, String nom, String prenom, String mail, String adresse, String tel, String photo, int idConseiller, String login) {
         this.idClient = idClient;
         this.mdp = mdp;
         this.nom = nom;
@@ -34,13 +35,14 @@ public class Client {
         this.tel = tel;
         this.photo = photo;
         this.idConseiller = idConseiller;
+        this.login = login;
     }
 
-    public String getIdClient() {
+    public int getIdClient() {
         return idClient;
     }
 
-    public void setIdClient(String idClient) {
+    public void setIdClient(int idClient) {
         this.idClient = idClient;
     }
 
@@ -92,14 +94,6 @@ public class Client {
         this.tel = tel;
     }
 
-    public String getIdConseiller() {
-        return idConseiller;
-    }
-
-    public void setIdConseiller(String idConseiller) {
-        this.idConseiller = idConseiller;
-    }
-
     public String getPhoto() {
         return photo;
     }
@@ -107,7 +101,23 @@ public class Client {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
+
+    public int getIdConseiller() {
+        return idConseiller;
+    }
+
+    public void setIdConseiller(int idConseiller) {
+        this.idConseiller = idConseiller;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
     
-    
+
             
 }
