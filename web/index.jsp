@@ -28,7 +28,7 @@
         crossorigin="anonymous"></script>
     </head>
     <body>
-                <br>
+        <br>
         <br>
 
         <!-- début formulaire de connexion -->
@@ -42,7 +42,7 @@
                             <h4 class="text-center">Bienvenue chez FantasticFour !</h4>                        
                         </div>
                         <div class="card-body">
-                            <div>
+                            <div >
                                 <form action="login" method="POST">
                                     <div class="form-group" >
                                         <input type="text" name="username" class="form-control" value="${param["username"]}" placeholder="username">
@@ -50,15 +50,15 @@
                                     <div class="form-group" >
                                         <input type="password" name="mdp" class="form-control" placeholder="password">
                                     </div>
-                                    <button type="submit" class="btn  btn-block font-weight-bold">connexion</button>
+                                    <button type="submit" class="btn  btn-block ">connexion</button>
                                     <hr>
-                                    <button type ="button" class = "btn btn-black   btn-block " > Vous n'avez pas encore de compte ? </button>
-                                        
+                                    <button type ="button" class = "btn btn-black   btn-block " onclick="location.href = 'DemandeCreation'" > Vous n'avez pas encore de compte ? </button>
+
                                 </form>
-                                
+
                                 <p class = "pmsgr">
                                     ${msg}
-                                    
+
                                 </p>
                             </div>
                         </div>
