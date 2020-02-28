@@ -17,9 +17,9 @@ public class HistoriqueConnexion {
     private String nom;
     private String prenom;
     private Timestamp date;
-    private String client_idclients;
+    private int client_idclients;
 
-    public HistoriqueConnexion(int idhistoriqueConnexion, String nom, String prenom, Timestamp date, String client_idclients) {
+    public HistoriqueConnexion(int idhistoriqueConnexion, String nom, String prenom, Timestamp date, int client_idclients) {
         this.idhistoriqueConnexion = idhistoriqueConnexion;
         this.nom = nom;
         this.prenom = prenom;
@@ -63,11 +63,11 @@ public class HistoriqueConnexion {
         this.date = date;
     }
 
-    public String getClient_idclients() {
+    public int getClient_idclients() {
         return client_idclients;
     }
 
-    public void setClient_idclients(String client_idclients) {
+    public void setClient_idclients(int client_idclients) {
         this.client_idclients = client_idclients;
     }
     

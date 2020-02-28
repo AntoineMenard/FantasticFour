@@ -8,6 +8,7 @@ package fr.solutec.dao;
 import fr.solutec.model.Conseiller;
 import fr.solutec.model.HistoriqueConnexion;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -39,12 +40,28 @@ public class HistoriqueConnexionDao {
             hc.setNom(rs.getString("nom"));
             hc.setPrenom(rs.getString("nom"));
             hc.setDate(rs.getTimestamp("date"));
-            hc.setClient_idclients(rs.getString("client_idclient"));
+            hc.setClient_idclients(rs.getInt("client_idclient"));
             
             
             historique.add(hc);
         }       
         return historique;
+    }
+    
+    public static void insertHistorique(HistoriqueConnexion hc ) throws SQLException {
+        
+        String sql = "insert into historiqueconnexion (nom, prenom, idclient) values (?,?,?) ";
+        
+        Connection connexion = AccessDb.getConnexion();
+        
+        PreparedStatement requete = connexion.prepareStatement(sql);
+        requete.setString(1, hc.getNom());
+        requete.setString(2, hc.getPrenom());
+        requete.setInt(3, hc.getClient_idclients());
+
+        
+        requete.execute();
+            
     }
     
 }

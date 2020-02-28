@@ -8,9 +8,11 @@ package fr.solutec.servlet;
 import fr.solutec.dao.AdminDao;
 import fr.solutec.dao.ClientDao;
 import fr.solutec.dao.ConseillerDao;
+import fr.solutec.dao.HistoriqueConnexionDao;
 import fr.solutec.model.Admin;
 import fr.solutec.model.Client;
 import fr.solutec.model.Conseiller;
+import fr.solutec.model.HistoriqueConnexion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -86,10 +88,13 @@ public class ConnexionServlet extends HttpServlet {
             Client cl = ClientDao.getByLogAndPass(log, mdp);
             Conseiller co = ConseillerDao.getByLogAndPass(log, mdp);
             Admin ad = AdminDao.getByLogAndPass(log, mdp);
+            
+            HistoriqueConnexion hc = new HistoriqueConnexion(0, cl.getNom(), cl.getPrenom(), null, cl.getIdClient());
 
             if(cl!=null || co!=null || ad!=null){
                 if (log.substring(0, 2).equals("Cl")){
                     request.getSession(true).setAttribute("client", cl);
+                    HistoriqueConnexionDao.insertHistorique(hc);
                 request.getRequestDispatcher("WEB-INF/menuClient.jsp").forward(request, response);
                 }else if(log.substring(0, 2).equals("Co")){
                     request.getSession(true).setAttribute("conseiller", co);

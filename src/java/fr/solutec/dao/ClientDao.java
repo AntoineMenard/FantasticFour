@@ -38,6 +38,7 @@ public class ClientDao {
             u.setIdClient(rs.getInt("idclient"));
             u.setLogin(rs.getString("login"));
             u.setMdp(rs.getString("mdp"));
+            u.setPrenom("prenom");
         }
         
         
