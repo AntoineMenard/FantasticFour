@@ -91,13 +91,13 @@ public class ConnexionServlet extends HttpServlet {
             Client cl = ClientDao.getByLogAndPass(log, mdp);
             Conseiller co = ConseillerDao.getByLogAndPass(log, mdp);
             Admin ad = AdminDao.getByLogAndPass(log, mdp);
-
+            
 
             String testco = log.substring(0, 2);
             if (cl != null || co != null || ad != null) {
                 if (log.substring(0, 2).equals("Cl")) {
 
-                    HistoriqueConnexion hc = new HistoriqueConnexion(0, cl.getNom(), cl.getPrenom(), Timestamp.from(Instant.MIN), cl.getIdClient());
+                   HistoriqueConnexion hc = new HistoriqueConnexion(0, cl.getNom(), cl.getPrenom(), Timestamp.from(Instant.MIN), cl.getIdClient());
 
                     if (cl != null || co != null || ad != null) {
                         if (log.substring(0, 2).equals("Cl")) {
@@ -124,8 +124,13 @@ public class ConnexionServlet extends HttpServlet {
                         request.getRequestDispatcher("index.jsp").forward(request, response);
                     }
 
-                }
-            }
+                }else if (log.substring(0, 2).equals("Co")) {
+                    //HistoriqueConnexionDao.insertHistorique(hc);
+                            request.getRequestDispatcher("WEB-INF/menuConseiller.jsp").forward(request, response);
+                }else if (log.substring(0, 2).equals("Ad")) {
+                            request.getSession(true).setAttribute("admin", ad);
+                            request.getRequestDispatcher("WEB-INF/menuAdmin.jsp").forward(request, response);
+            }}
         } catch (Exception e) {
             PrintWriter out = response.getWriter();
             out.println(e.getMessage());
