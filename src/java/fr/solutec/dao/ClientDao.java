@@ -6,6 +6,8 @@
 package fr.solutec.dao;
 
 import fr.solutec.model.Client;
+import fr.solutec.model.Conseiller;
+import fr.solutec.model.DemandeCreation;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,8 +40,6 @@ public class ClientDao {
             u.setIdClient(rs.getInt("idclient"));
             u.setLogin(rs.getString("login"));
             u.setMdp(rs.getString("mdp"));
-            u.setNom(rs.getString("nom"));
-            u.setPrenom(rs.getString("prenom"));
         }
         
         
@@ -47,27 +47,34 @@ public class ClientDao {
         return u;
     }
     
-    /*public static void insertPerson(Client u)
+    public static void insertClient(Client u)
     throws SQLException{
-        
-        String sql = "Insert into person (nom,login,password) values (?,?,?)";
+
+        String sql = "Insert into client (idclient,mdp,nom,prenom,mail,adresse,tel,photo,conseiller_idconseiller,login) values (?,?,?,?,?,?,?,?,?,?)";
         
         Connection connexion = AccessDb.getConnexion();
         
         PreparedStatement requete = connexion.prepareStatement(sql);
-        requete.setString(1, u.getNom());
-        requete.setString(2, u.getLogin());
-        requete.setString(3, u.getMdp());
+        requete.setInt(1, u.getIdClient());
+        requete.setString(2, u.getMdp());
+        requete.setString(3, u.getNom());
+        requete.setString(4, u.getPrenom());
+        requete.setString(5, u.getMail());
+        requete.setString(6, u.getAdresse());
+        requete.setString(7, u.getTel());
+        requete.setString(8, u.getPhoto());
+        requete.setInt(9, u.getIdConseiller());
+        requete.setString(10, u.getLogin());
         
         requete.execute();
     }
     
-    public static List<Client> getAllPerson()
+        public static List<DemandeCreation> getAllInscription()
         throws SQLException{
         
-        List<Client> Clients = new ArrayList<>();
+        List<DemandeCreation> inscriptions = new ArrayList<>();
         
-        String sql = "select * from person";
+        String sql = "select * from demandeinscription";
         
         Connection connexion = AccessDb.getConnexion();
         
@@ -76,17 +83,19 @@ public class ClientDao {
         ResultSet rs = requete.executeQuery(sql);
         
         while(rs.next()){
-            Client u = new Client();
-            u.setId(rs.getInt("idperson"));
-            u.setNom(rs.getString("nom"));
-            u.setLogin(rs.getString("login"));
+            DemandeCreation c = new DemandeCreation();
+            c.setMail(rs.getString("mail"));
+            c.setNom(rs.getString("nom"));
+            c.setPrenom(rs.getString("prenom"));
+            c.setAdresse(rs.getString("adresse"));
+            c.setTel(rs.getString("tel"));
             
-            Clients.add(u);
+            inscriptions.add(c);
         }       
-        return Clients;
+        return inscriptions;
     } 
     
-     public static void deletePerson(String id)
+     /*public static void deletePerson(String id)
     throws SQLException{
          //String id2 = request.getParameter("login");
         

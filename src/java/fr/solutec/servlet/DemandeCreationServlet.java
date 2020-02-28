@@ -73,7 +73,7 @@ public class DemandeCreationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String demandeNom = request.getParameter("nomUser");
+        /*String demandeNom = request.getParameter("nomUser");
         String demandePrenom = request.getParameter("prenomUser");
         String demandeAdresse = request.getParameter("adresseUser");
         String demandeMail= request.getParameter("mailUser");
@@ -91,7 +91,7 @@ public class DemandeCreationServlet extends HttpServlet {
         } catch (Exception e) {
             PrintWriter out = response.getWriter();
             out.println(e.getMessage());
-        }
+        }*/
 
     }
 

@@ -9,19 +9,22 @@ import fr.solutec.dao.ClientDao;
 import fr.solutec.dao.ConseillerDao;
 import fr.solutec.model.Client;
 import fr.solutec.model.Conseiller;
+import fr.solutec.model.DemandeCreation;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author esic
  */
-@WebServlet(name = "CreationClientServlet", urlPatterns = {"/CreationClientServlet"})
+@WebServlet(name = "CreationClientServlet", urlPatterns = {"/creationclient"})
 public class CreationClientServlet extends HttpServlet {
 
     /**
@@ -62,7 +65,21 @@ public class CreationClientServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+         //HttpSession session = request.getSession(true);
+        //DemandeCreation u = (DemandeCreation) session.getAttribute("inscriptions");
+        //if (u!=null){
+             try {
+            List<DemandeCreation> inscriptions = ClientDao.getAllInscription();
+            request.setAttribute("creationclient", inscriptions);
+            
+            request.getRequestDispatcher("WEB-INF/listeInscription.jsp").forward(request, response);
+        } catch (Exception e) {
+        //}
+        //}else{
+            PrintWriter out = response.getWriter();
+            out.println(e.getMessage());
+        }
+        
     }
 
     /**
@@ -76,6 +93,7 @@ public class CreationClientServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         String mdp = request.getParameter("mdp");
         String nom = request.getParameter("nom");
         String prenom = request.getParameter("prenom");
@@ -83,12 +101,12 @@ public class CreationClientServlet extends HttpServlet {
         String adresse = request.getParameter("adresse");
         String tel = request.getParameter("tel");
         String photo = null;
-        int idconseiller = Integer.parseInt(request.getParameter("idconseiller"));
+        int idconseiller = 0;
         String log = null;
         try {
 
             Client c = new Client(0, mdp, nom, prenom, mail, adresse, tel,photo, idconseiller, log) ;
-            //ClientDao.insertClient(c);
+            ClientDao.insertClient(c);
             request.setAttribute("bienCree", "Le compte client a bien été créé");
             response.sendRedirect("creationclient");
             

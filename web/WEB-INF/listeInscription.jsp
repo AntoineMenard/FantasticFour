@@ -1,9 +1,9 @@
 <%-- 
-    Document   : creationConseiller
-    Created on : 28 févr. 2020, 11:54:10
+    Document   : consultationConseiller
+    Created on : 28 févr. 2020, 11:56:08
     Author     : esic
 --%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -11,8 +11,9 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Création conseiller</title>
+        <title>Conseillers</title>
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
         <link rel="stylesheet"
               href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
               integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
@@ -49,7 +50,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="historiqueconseiller" >HISTORIQUE DE CONNEXION</a>
+                            <a class="nav-link" href="historiqueconnexion" >HISTORIQUE DE CONNEXION</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
@@ -60,54 +61,75 @@
                 </div>
             </nav>
         </div>
+        
+        
+        <br>
 
-        <br> <br>
-        <div class="row">
-            <div class = "col-sm-2"></div>
+        <div class="container"> 
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th class="text-center">EMAIL</th>
+                                <th class="text-center">NOM</th>
+                                <th class="text-center">PRENOM</th>
+                                <th class="text-center">ADRESSE</th>
+                                <th class="text-center">TEL</th>
+                                <th class="text-center">EDIT</th>
+                                <th class="text-center">DELETE</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items="${creationclient}" var="li">
+                                <tr>
+                                    <td class="text-center">${li.mail}</td>
+                                    <td class="text-center">${li.nom}</td>
+                                    <td class="text-center">${li.prenom}</td>
+                                    <td class="text-center">${li.adresse}</td>
+                                    <td class="text-center">${li.tel}</td>
+                                    <td class="text-center">
+                                        <button class="btn"><i class="material-icons">edit</i></button>
+                                    </td>
+                                    <!--td class="text-center">
 
-            <div class="col-sm-8">
-                <div class="card">
-                    <div class = "card-header cardHeaderPerso">
-                        <h3 class="text-center">Remplissez le formulaire pour créer un client</h3>  
+                                        <button class="btn" onclick="idDelete(${li.iddemandeInscription})"><i style="color:darkred" class="material-icons" >delete</i></button>
+                                    </td-->
 
-                    </div>
-                    <div class="card-body">
-                        <div>
-                            <form action="creationclient" method="POST">
-                                <div  class="form-group" >
-                                    Nom 
-                                    <input required ="" type="text" name="nom" class="form-control"  placeholder="nom">
-                                </div>                                
-                                <div  class="form-group" >
-                                    Prénom 
-                                    <input required ="" type="text" name="prenom" class="form-control"  placeholder="prenom">
-                                </div>
-                                <div  class="form-group" >
-                                    Email 
-                                    <input required ="" type="text" name="mail" class="form-control"  placeholder="email">
-                                </div>
-                                <div  class="form-group" >
-                                    Mot de passe
-                                    <input required ="" type="text" name="mdp" class="form-control"  placeholder="mot de passe">
-                                </div>
-                                                            
-                                <button type="submit" class="btn btn-primary btn-block font--bold ">Créer un conseiller</button>   
-                            </form>  
-                            
-                            <p >
 
-                                ${msg}
+                                </tr>
 
-                            </p>
+                            </c:forEach>
+                        </tbody>
+                    </table>
 
-                        </div>
-                        
-                        
-                        
-                    </div>
+                    <form action='deleteinscription' method="post" id="myForm">
+
+                        <input type="hidden" id="id" name ="id">
+
+                    </form>
+
+
                 </div>
-            </div>
-        </div>
 
+            </div>
+  
+            
+        </div>
+                    
+        <script>
+
+            function idDelete(idrecup) {
+
+                // console.log("Test test", idrecup);
+                document.querySelector('#id').value = idrecup;
+                document.querySelector("#myForm").submit();
+
+            }
+
+        </script>
+        
+        
     </body>
 </html>

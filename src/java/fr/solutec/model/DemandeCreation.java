@@ -10,19 +10,31 @@ package fr.solutec.model;
  * @author esic
  */
 public class DemandeCreation {
+    private int iddemandeInscription;
     private String mail;
     private String nom;
     private String prenom;
     private String adresse;
     private String tel;
 
-    public DemandeCreation(String mail, String nom, String prenom, String adresse, String tel) {
+    public int getIddemandeInscription() {
+        return iddemandeInscription;
+    }
+
+    public void setIddemandeInscription(int iddemandeInscription) {
+        this.iddemandeInscription = iddemandeInscription;
+    }
+
+    public DemandeCreation(int iddemandeInscription, String mail, String nom, String prenom, String adresse, String tel) {
+        this.iddemandeInscription = iddemandeInscription;
         this.mail = mail;
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
         this.tel = tel;
     }
+
+    
 
     public DemandeCreation() {
     }
