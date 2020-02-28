@@ -18,31 +18,33 @@
         <%@include file = "menuClient.jsp"%>
         <div class="container">
             <br>
-            <h4 >Liste des comptes : </h4> 
-            <table class="table">
-                <thead class="thead-light">
-                    <tr>
-                        <th>Numéro de compte</th>
-                        <th>Solde</th>
-                        <th>a </th>
-                        <th> a</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <c:forEach items = "${comptesutilisateur}" var = "c">
-                    <tr>
-                        <td class="align-center">${c.idcompte}</td>
-                        <td class="align-center">${c.solde}</td>
-                        <td class="align-center">${c.decouvertpermis}</td>
-                        <td><button class="btn btn-primary align-center "  ><i class="fas fa-pen"></i></button></td>
-                        <td><button class="btn btn-primary align-center "  >
-                                <i class="fas fa-times"></i></button></td>
+            <div class="row">
+                <div class="col-sm-7">
+                    <h4 >Liste des comptes : </h4> 
+                    <table class="table">
+                        <thead class="thead-light">
+                            <tr>
+                                <th>Numéro de <br>compte</th>
+                                <th class="text-align-center">Solde (€)</th>
+                                <th>Decouvert <br> autorisé(€) </th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <c:forEach items = "${comptesutilisateur}" var = "c">
+                                <tr>
+                                    <td class="align-center">${c.idcompte}</td>
+                                    <td class="align-center">${c.solde}</td>
+                                    <td class="align-center">${c.decouvertpermis}</td>
 
-                    </tr>
-                </c:forEach>
 
-                </tbody>
-            </table>
+                                </tr>
+                            </c:forEach>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
 
         </div>
