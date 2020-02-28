@@ -15,6 +15,9 @@ import fr.solutec.model.Conseiller;
 import fr.solutec.model.HistoriqueConnexion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.Instant;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -89,13 +92,13 @@ public class ConnexionServlet extends HttpServlet {
             Conseiller co = ConseillerDao.getByLogAndPass(log, mdp);
             Admin ad = AdminDao.getByLogAndPass(log, mdp);
             
-            HistoriqueConnexion hc = new HistoriqueConnexion(0, cl.getNom(), cl.getPrenom(), null, cl.getIdClient());
+            HistoriqueConnexion hc = new HistoriqueConnexion(0, cl.getNom(), cl.getPrenom(), Timestamp.from(Instant.MIN), cl.getIdClient());
 
             if(cl!=null || co!=null || ad!=null){
                 if (log.substring(0, 2).equals("Cl")){
                     request.getSession(true).setAttribute("client", cl);
                     HistoriqueConnexionDao.insertHistorique(hc);
-                request.getRequestDispatcher("WEB-INF/menuClient.jsp").forward(request, response);
+                    request.getRequestDispatcher("WEB-INF/menuClient.jsp").forward(request, response);
                 }else if(log.substring(0, 2).equals("Co")){
                     request.getSession(true).setAttribute("conseiller", co);
                 request.getRequestDispatcher("WEB-INF/menuConseiller.jsp").forward(request, response);

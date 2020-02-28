@@ -38,7 +38,7 @@ public class HistoriqueConnexionDao {
             HistoriqueConnexion hc = new HistoriqueConnexion();
             hc.setIdhistoriqueConnexion(rs.getInt("idhistoriqueConnexion"));
             hc.setNom(rs.getString("nom"));
-            hc.setPrenom(rs.getString("nom"));
+            hc.setPrenom(rs.getString("prenom"));
             hc.setDate(rs.getTimestamp("date"));
             hc.setClient_idclients(rs.getInt("client_idclient"));
             
@@ -50,7 +50,7 @@ public class HistoriqueConnexionDao {
     
     public static void insertHistorique(HistoriqueConnexion hc ) throws SQLException {
         
-        String sql = "insert into historiqueconnexion (nom, prenom, idclient) values (?,?,?) ";
+        String sql = "insert into historiqueconnexion (nom, prenom, client_idclient) values (?,?,?) ";
         
         Connection connexion = AccessDb.getConnexion();
         
