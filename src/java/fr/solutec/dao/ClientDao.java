@@ -23,7 +23,7 @@ public class ClientDao {
     throws SQLException{
         Client u = null;
         
-        String sql = "select * from person where login=? and password=?";
+        String sql = "select * from client where Login=? and mdp=?";
         
         Connection connexion = AccessDb.getConnexion();
         
