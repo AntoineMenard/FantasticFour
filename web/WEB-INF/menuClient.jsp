@@ -51,11 +51,11 @@
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item ">
-                            <button type="button" class="btn btn-danger" onclick="location.href='deconnexion'">DECONNEXION</button>    
+                            <button type="button" class="btn btn-danger" onclick="location.href = 'deconnexion'">DECONNEXION</button>    
                         </li>
                     </ul>
                 </div>
-            </nav>
+            </nav>            
         </div>
     </body>
 </html>
