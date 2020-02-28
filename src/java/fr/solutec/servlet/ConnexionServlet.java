@@ -78,16 +78,16 @@ public class ConnexionServlet extends HttpServlet {
         String mdp = request.getParameter("mdp");
         
         try {
-            /*Client cl = ClientDao.getByLogAndPass(log, mdp);
+            Client cl = ClientDao.getByLogAndPass(log, mdp);
             if(cl!=null){
-                request.getSession(true).setAttribute("client", cl);*/
+                request.getSession(true).setAttribute("client", cl);
                 request.getRequestDispatcher("WEB-INF/menuClient.jsp").forward(request, response);
                
 
-            /*}else{
+            }else{
                 request.setAttribute("msg", "l'identifiant ou le mot de passe est incorrect");
                 request.getRequestDispatcher("index.jsp").forward(request, response);
-            }*/
+            }
         } catch (Exception e) {
             PrintWriter out = response.getWriter();
             out.println(e.getMessage());
