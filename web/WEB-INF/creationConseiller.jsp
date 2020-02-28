@@ -73,28 +73,35 @@
                     </div>
                     <div class="card-body">
                         <div>
-                            <form action="" method="POST">
+                            <form action="creationconseiller" method="POST">
                                 <div  class="form-group" >
                                     Nom 
-                                    <input required ="" type="text" name="nomUser" class="form-control"  placeholder="nom">
+                                    <input required ="" type="text" name="nom" class="form-control"  placeholder="nom">
                                 </div>                                
                                 <div  class="form-group" >
                                     Prénom 
-                                    <input required ="" type="text" name="prenomUser" class="form-control"  placeholder="prenom">
-                                </div>
-                                <div  class="form-group" >
-                                    Adresse 
-                                    <input required ="" type="text" name="adresseUser" class="form-control"  placeholder="adresse">
+                                    <input required ="" type="text" name="prenom" class="form-control"  placeholder="prenom">
                                 </div>
                                 <div  class="form-group" >
                                     Email 
-                                    <input required ="" type="text" name="mailUser" class="form-control"  placeholder="email">
+                                    <input required ="" type="text" name="mail" class="form-control"  placeholder="email">
+                                </div>
+                                <div  class="form-group" >
+                                    Mot de passe
+                                    <input required ="" type="text" name="mdp" class="form-control"  placeholder="mot de passe">
                                 </div>
                                                             
                                 <button type="submit" class="btn btn-primary btn-block font--bold ">Créer un conseiller</button>   
                             </form>                            
 
                         </div>
+                        
+                        <p >
+
+                            ${bienCree}
+
+                        </p>
+                        
                     </div>
                 </div>
             </div>

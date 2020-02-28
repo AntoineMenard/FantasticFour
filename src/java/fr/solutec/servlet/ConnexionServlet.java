@@ -5,8 +5,12 @@
  */
 package fr.solutec.servlet;
 
+import fr.solutec.dao.AdminDao;
 import fr.solutec.dao.ClientDao;
+import fr.solutec.dao.ConseillerDao;
+import fr.solutec.model.Admin;
 import fr.solutec.model.Client;
+import fr.solutec.model.Conseiller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -14,6 +18,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import jdk.nashorn.internal.objects.NativeString;
 
 /**
  *
@@ -74,14 +79,26 @@ public class ConnexionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String log = request.getParameter("idClient");
+        String log = request.getParameter("username");
         String mdp = request.getParameter("mdp");
         
         try {
             Client cl = ClientDao.getByLogAndPass(log, mdp);
-            if(cl!=null){
-                request.getSession(true).setAttribute("client", cl);
+            Conseiller co = ConseillerDao.getByLogAndPass(log, mdp);
+            Admin ad = AdminDao.getByLogAndPass(log, mdp);
+            String testco = log.substring(0, 2);
+            if(cl!=null || co!=null || ad!=null){
+                if (log.substring(0, 2).equals("Cl")){
+                    request.getSession(true).setAttribute("client", cl);
                 request.getRequestDispatcher("WEB-INF/menuClient.jsp").forward(request, response);
+                }else if(log.substring(0, 2).equals("Co")){
+                    request.getSession(true).setAttribute("conseiller", co);
+                request.getRequestDispatcher("WEB-INF/menuConseiller.jsp").forward(request, response);
+                }else if(log.substring(0, 2).equals("Ad")){
+                    request.getSession(true).setAttribute("admin", ad);
+                request.getRequestDispatcher("WEB-INF/menuAdmin.jsp").forward(request, response);
+                }
+                
                
 
             }else{
