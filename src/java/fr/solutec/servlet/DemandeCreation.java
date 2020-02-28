@@ -5,7 +5,6 @@
  */
 package fr.solutec.servlet;
 
-import fr.solutec.model.DemandeInscription;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -78,7 +77,7 @@ public class DemandeCreation extends HttpServlet {
         String demandeAdresse = request.getParameter("adresseUser");
         String demandeMail= request.getParameter("mailUser");
         String demandeTelephone= request.getParameter("telUser");
-        DemandeInscription demande = new DemandeInscription(demandeMail, demandeNom, demandePrenom, demandeAdresse, demandeTelephone);
+        
             try {
             request.setAttribute("msg", demandeNom);
 
