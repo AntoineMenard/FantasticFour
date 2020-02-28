@@ -43,6 +43,9 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+                    <div>
+                        test
+                    </div>
                     
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
