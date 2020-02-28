@@ -11,23 +11,29 @@ package fr.solutec.model;
  */
 public class Admin {
 
-    private String id;
+    private int idAdmin;
     private String mdp;
+    private String nom;
+    private String prenom;
+    private String login;
 
     public Admin() {
     }
 
-    public Admin(String id, String mdp) {
-        this.id = id;
+    public Admin(int idAdmin, String mdp, String nom, String prenom, String login) {
+        this.idAdmin = idAdmin;
         this.mdp = mdp;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.login = login;
     }
 
-    public String getId() {
-        return id;
+    public int getIdAdmin() {
+        return idAdmin;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdAdmin(int idAdmin) {
+        this.idAdmin = idAdmin;
     }
 
     public String getMdp() {
@@ -37,6 +43,34 @@ public class Admin {
     public void setMdp(String mdp) {
         this.mdp = mdp;
     }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+    
+    
+            
+
     
     
 
