@@ -44,12 +44,12 @@
                                 CONSEILLERS
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Créer un conseiller</a>
-                                <a class="dropdown-item" href="#">Consulter compte des consillers</a>
+                                <a class="dropdown-item" href="creationconseiller">Créer un conseiller</a>
+                                <a class="dropdown-item" href="listeconseiller">Consulter compte des consillers</a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="" >HISTORIQUE DE CONNEXION</a>
+                            <a class="nav-link" href="historiqueconnexion" >HISTORIQUE DE CONNEXION</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
