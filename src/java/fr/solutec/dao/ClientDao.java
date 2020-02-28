@@ -40,6 +40,13 @@ public class ClientDao {
             u.setIdClient(rs.getInt("idclient"));
             u.setLogin(rs.getString("login"));
             u.setMdp(rs.getString("mdp"));
+            u.setNom(rs.getString("nom"));
+            u.setPrenom(rs.getString("prenom"));
+            u.setPhoto(rs.getString("photo"));
+            u.setAdresse(rs.getString("adresse"));
+            u.setIdConseiller(rs.getInt("conseiller_idconseiller"));
+            u.setMail(rs.getString("mail"));
+            u.setTel(rs.getString("tel"));
         }
         
         
