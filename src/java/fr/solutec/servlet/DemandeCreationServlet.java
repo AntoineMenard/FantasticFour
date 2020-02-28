@@ -3,8 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.solutec.servlet;
 
+import fr.solutec.model.DemandeCreation;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author esic
  */
 @WebServlet(name = "DemandeCreation", urlPatterns = {"/DemandeCreation"})
-public class DemandeCreation extends HttpServlet {
+public class DemandeCreationServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -77,9 +77,12 @@ public class DemandeCreation extends HttpServlet {
         String demandeAdresse = request.getParameter("adresseUser");
         String demandeMail= request.getParameter("mailUser");
         String demandeTelephone= request.getParameter("telUser");
+        DemandeCreation d = new DemandeCreation(demandeMail, demandeNom, demandePrenom, demandeAdresse, demandeTelephone);
         
             try {
             request.setAttribute("msg", demandeNom);
+            /*InsertDemandeCreation()
+            */
 
             request.getRequestDispatcher("index.jsp").forward(request, response);
 
