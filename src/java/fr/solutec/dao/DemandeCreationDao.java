@@ -19,7 +19,7 @@ public class DemandeCreationDao {
 public static void InsertDemandeCreation()
         throws SQLException{ 
         
-        String sql = "INSERT DEMANDEINSCRIPTION (mail, nom, prenom, adresse, mail) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO DEMANDEINSCRIPTION (mail, nom, prenom, adresse, mail) VALUES (?,?,?,?,?)";
         /*Connection connexion = AccessDb.getConnection();
         
         PreparedStatement requete = connexion.prepareStatement(sql);
