@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package fr.solutec.servlet;
 
-import fr.solutec.dao.ClientDao;
-import fr.solutec.model.Client;
+import fr.solutec.model.DemandeCreation;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author esic
  */
-@WebServlet(name = "ConnexionServlet", urlPatterns = {"/login"})
-public class ConnexionServlet extends HttpServlet {
+@WebServlet(name = "DemandeCreation", urlPatterns = {"/DemandeCreation"})
+public class DemandeCreationServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +37,10 @@ public class ConnexionServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ConnexionServlet</title>");            
+            out.println("<title>Servlet DemandeCreation</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ConnexionServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet DemandeCreation at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,7 +58,7 @@ public class ConnexionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        request.getRequestDispatcher("demandeCreation.jsp").forward(request, response);
     }
 
     /**
@@ -74,24 +72,26 @@ public class ConnexionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String log = request.getParameter("idClient");
-        String mdp = request.getParameter("mdp");
+        String demandeNom = request.getParameter("nomUser");
+        String demandePrenom = request.getParameter("prenomUser");
+        String demandeAdresse = request.getParameter("adresseUser");
+        String demandeMail= request.getParameter("mailUser");
+        String demandeTelephone= request.getParameter("telUser");
+        DemandeCreation d = new DemandeCreation(demandeMail, demandeNom, demandePrenom, demandeAdresse, demandeTelephone);
         
-        try {
-            /*Client cl = ClientDao.getByLogAndPass(log, mdp);
-            if(cl!=null){
-                request.getSession(true).setAttribute("client", cl);*/
-                request.getRequestDispatcher("WEB-INF/menuClient.jsp").forward(request, response);
-               
+            try {
+            request.setAttribute("msg", demandeNom);
+            /*InsertDemandeCreation()
+            */
 
-            /*}else{
-                request.setAttribute("msg", "l'identifiant ou le mot de passe est incorrect");
-                request.getRequestDispatcher("index.jsp").forward(request, response);
-            }*/
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+
+
         } catch (Exception e) {
             PrintWriter out = response.getWriter();
             out.println(e.getMessage());
         }
+
     }
 
     /**
