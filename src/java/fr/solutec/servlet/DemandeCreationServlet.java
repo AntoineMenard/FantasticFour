@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import fr.solutec.dao.DemandeCreationDao;
 import fr.solutec.model.DemandeCreation;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -81,8 +82,8 @@ public class DemandeCreationServlet extends HttpServlet {
         
             try {
             request.setAttribute("msg", demandeNom);
-            /*InsertDemandeCreation()
-            */
+            DemandeCreationDao.InsertDemandeCreation(d);
+            
 
             request.getRequestDispatcher("index.jsp").forward(request, response);
 
