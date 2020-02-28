@@ -37,38 +37,34 @@
                 <div class="card">
                     <div class = "card-header cardHeaderPerso">
                         <h3 class="text-center">Remplissez le formulaire de demande de création</h3>  
-                        
+
                     </div>
                     <div class="card-body">
                         <div>
-                            <form action="inscription" method="POST">
+                            <form action="DemandeCreation" method="POST">
                                 <div  class="form-group" >
-                                     Nom 
+                                    Nom 
                                     <input required ="" type="text" name="nomUser" class="form-control"  placeholder="nom">
                                 </div>                                
                                 <div  class="form-group" >
-                                     Prénom 
+                                    Prénom 
                                     <input required ="" type="text" name="prenomUser" class="form-control"  placeholder="prenom">
                                 </div>
                                 <div  class="form-group" >
-                                     Adresse 
-                                    <input required ="" type="text" name="nomUser" class="form-control"  placeholder="adresse">
+                                    Adresse 
+                                    <input required ="" type="text" name="adresseUser" class="form-control"  placeholder="adresse">
                                 </div>
                                 <div  class="form-group" >
-                                     Mail 
-                                    <input required ="" type="text" name="nomUser" class="form-control"  placeholder="mail">
+                                    Mail 
+                                    <input required ="" type="text" name="mailUser" class="form-control"  placeholder="mail">
                                 </div>
                                 <div  class="form-group" >
                                     Telephone 
-                                    <input required ="" type="text" name="nomUser" class="form-control" placeholder ="numéro de téléphone"  >
+                                    <input required ="" type="text" name="telUser" class="form-control" placeholder ="numéro de téléphone"  >
                                 </div>                               
                                 <button type="submit" class="btn btn-primary btn-block font--bold ">Envoyer demande</button>   
-                            </form>
-
-
-
-
-                                </p>
+                            </form>                            
+                           
                         </div>
                     </div>
                 </div>
