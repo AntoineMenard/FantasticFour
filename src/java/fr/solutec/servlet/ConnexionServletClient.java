@@ -5,6 +5,8 @@
  */
 package fr.solutec.servlet;
 
+import fr.solutec.dao.ClientDao;
+import fr.solutec.model.Client;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author esic
  */
 @WebServlet(name = "ConnexionServlet", urlPatterns = {"/ConnexionServlet"})
-public class ConnexionServlet extends HttpServlet {
+public class ConnexionServletClient extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -72,7 +74,22 @@ public class ConnexionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        String log = request.getParameter("idClient");
+        String mdp = request.getParameter("mdp");
+        
+        try {
+            Client cl = ClientDao.getByLogAndPass(log, mdp);
+            if(cl!=null){
+                request.getSession(true).setAttribute("client", cl);
+                response.sendRedirect("home");
+            }else{
+                request.setAttribute("msg", "l'identifiant ou le mot de passe est incorrect");
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
+        } catch (Exception e) {
+            PrintWriter out = response.getWriter();
+            out.println(e.getMessage());
+        }
     }
 
     /**
