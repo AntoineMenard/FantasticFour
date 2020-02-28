@@ -87,8 +87,8 @@ public class ClientDao {
             c.setMail(rs.getString("mail"));
             c.setNom(rs.getString("nom"));
             c.setPrenom(rs.getString("prenom"));
-            c.setPrenom(rs.getString("adresse"));
-            c.setPrenom(rs.getString("tel"));
+            c.setAdresse(rs.getString("adresse"));
+            c.setTel(rs.getString("tel"));
             
             inscriptions.add(c);
         }       
