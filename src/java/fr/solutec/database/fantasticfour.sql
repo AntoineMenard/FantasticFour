@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 28 fév. 2020 à 17:34
+-- Généré le :  ven. 28 fév. 2020 à 17:44
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -190,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `conseiller` (
 --
 
 INSERT INTO `conseiller` (`idconseiller`, `mdp`, `nom`, `prenom`, `mail`, `statut`, `photo`, `login`) VALUES
-(1, 'cyril', 'dev19', 'cyril', 'cyrilmail', 1, NULL, 'Cl1');
+(1, 'cyril', 'dev19', 'cyril', 'cyrilmail', 1, NULL, 'Co1');
 
 --
 -- Déclencheurs `conseiller`
@@ -236,7 +236,7 @@ CREATE TABLE IF NOT EXISTS `historiqueconnexion` (
   `client_idclient` int(11) NOT NULL,
   PRIMARY KEY (`idhistoriqueConnexion`),
   KEY `fk_historiqueConnexion_client1_idx` (`client_idclient`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `historiqueconnexion`
@@ -249,7 +249,10 @@ INSERT INTO `historiqueconnexion` (`idhistoriqueConnexion`, `nom`, `prenom`, `da
 (4, 'dev19', 'tanguy', '2020-02-28 17:18:16', 1),
 (5, 'dev19', 'tanguy', '2020-02-28 17:30:33', 1),
 (6, 'dev19', 'tanguy', '2020-02-28 17:52:32', 1),
-(7, 'dev19', 'tanguy', '2020-02-28 17:55:27', 1);
+(7, 'dev19', 'tanguy', '2020-02-28 17:55:27', 1),
+(8, 'dev19', 'tanguy', '2020-02-28 18:38:09', 1),
+(9, 'dev19', 'tanguy', '2020-02-28 18:41:06', 1),
+(10, 'dev19', 'tanguy', '2020-02-28 18:42:45', 1);
 
 -- --------------------------------------------------------
 
