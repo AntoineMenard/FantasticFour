@@ -60,7 +60,7 @@ public class ConnexionServletClient extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     /**
@@ -81,7 +81,7 @@ public class ConnexionServletClient extends HttpServlet {
             Client cl = ClientDao.getByLogAndPass(log, mdp);
             if(cl!=null){
                 request.getSession(true).setAttribute("client", cl);
-                response.sendRedirect("home");
+                response.sendRedirect("menuclient");
             }else{
                 request.setAttribute("msg", "l'identifiant ou le mot de passe est incorrect");
                 request.getRequestDispatcher("index.jsp").forward(request, response);
