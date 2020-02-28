@@ -19,8 +19,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author esic
  */
-@WebServlet(name = "ConnexionServlet", urlPatterns = {"/ConnexionServlet"})
-public class ConnexionServletClient extends HttpServlet {
+@WebServlet(name = "ConnexionServlet", urlPatterns = {"/login"})
+public class ConnexionServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -81,7 +81,7 @@ public class ConnexionServletClient extends HttpServlet {
             Client cl = ClientDao.getByLogAndPass(log, mdp);
             if(cl!=null){
                 request.getSession(true).setAttribute("client", cl);
-                response.sendRedirect("menuclient");
+                response.sendRedirect("menuclient.jsp");
             }else{
                 request.setAttribute("msg", "l'identifiant ou le mot de passe est incorrect");
                 request.getRequestDispatcher("index.jsp").forward(request, response);
