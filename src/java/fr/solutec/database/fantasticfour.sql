@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 28 fév. 2020 à 15:17
+-- Généré le :  ven. 28 fév. 2020 à 17:44
 -- Version du serveur :  5.7.26
 -- Version de PHP :  7.2.18
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `fantasticfour`
 --
-CREATE DATABASE IF NOT EXISTS `fantasticfour` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `fantasticfour`;
 
 -- --------------------------------------------------------
 
@@ -124,7 +122,7 @@ CREATE TABLE IF NOT EXISTS `client` (
   `mail` varchar(45) NOT NULL,
   `adresse` varchar(150) DEFAULT NULL,
   `tel` varchar(45) NOT NULL,
-  `photo` varchar(45) DEFAULT NULL,
+  `photo` varchar(8000) DEFAULT NULL,
   `conseiller_idconseiller` int(11) NOT NULL,
   `login` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idclient`),
@@ -137,7 +135,7 @@ CREATE TABLE IF NOT EXISTS `client` (
 --
 
 INSERT INTO `client` (`idclient`, `mdp`, `nom`, `prenom`, `mail`, `adresse`, `tel`, `photo`, `conseiller_idconseiller`, `login`) VALUES
-(1, 'tanguy', 'dev19', 'tanguy', 'tanguymail', 'tanguyadresse', 'tanguytel', NULL, 1, 'Cl1');
+(1, 'tanguy', 'dev19', 'tanguy', 'tanguymail', 'tanguyadresse', 'tanguytel', 'https://ds1.static.rtbf.be/article/image/370x208/b/a/d/88bd6d07600c9fa9275ce0f52ebef37e-1523360564.jpg', 1, 'Cl1');
 
 --
 -- Déclencheurs `client`
@@ -181,7 +179,7 @@ CREATE TABLE IF NOT EXISTS `conseiller` (
   `prenom` varchar(45) NOT NULL,
   `mail` varchar(45) NOT NULL,
   `statut` tinyint(4) NOT NULL DEFAULT '1',
-  `photo` varchar(45) DEFAULT NULL,
+  `photo` varchar(8000) DEFAULT NULL,
   `login` varchar(45) NOT NULL,
   PRIMARY KEY (`idconseiller`),
   UNIQUE KEY `mail_UNIQUE` (`mail`)
@@ -192,7 +190,7 @@ CREATE TABLE IF NOT EXISTS `conseiller` (
 --
 
 INSERT INTO `conseiller` (`idconseiller`, `mdp`, `nom`, `prenom`, `mail`, `statut`, `photo`, `login`) VALUES
-(1, 'cyril', 'dev19', 'cyril', 'cyrilmail', 1, NULL, 'Cl1');
+(1, 'cyril', 'dev19', 'cyril', 'cyrilmail', 1, NULL, 'Co1');
 
 --
 -- Déclencheurs `conseiller`
@@ -238,7 +236,23 @@ CREATE TABLE IF NOT EXISTS `historiqueconnexion` (
   `client_idclient` int(11) NOT NULL,
   PRIMARY KEY (`idhistoriqueConnexion`),
   KEY `fk_historiqueConnexion_client1_idx` (`client_idclient`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `historiqueconnexion`
+--
+
+INSERT INTO `historiqueconnexion` (`idhistoriqueConnexion`, `nom`, `prenom`, `date`, `client_idclient`) VALUES
+(1, 'dev19', 'tanguy', '2020-02-28 16:48:37', 1),
+(2, 'dev19', 'tanguy', '2020-02-28 17:05:16', 1),
+(3, 'dev19', 'tanguy', '2020-02-28 17:17:53', 1),
+(4, 'dev19', 'tanguy', '2020-02-28 17:18:16', 1),
+(5, 'dev19', 'tanguy', '2020-02-28 17:30:33', 1),
+(6, 'dev19', 'tanguy', '2020-02-28 17:52:32', 1),
+(7, 'dev19', 'tanguy', '2020-02-28 17:55:27', 1),
+(8, 'dev19', 'tanguy', '2020-02-28 18:38:09', 1),
+(9, 'dev19', 'tanguy', '2020-02-28 18:41:06', 1),
+(10, 'dev19', 'tanguy', '2020-02-28 18:42:45', 1);
 
 -- --------------------------------------------------------
 

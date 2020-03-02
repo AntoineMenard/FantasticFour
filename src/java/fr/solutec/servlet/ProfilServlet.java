@@ -5,6 +5,7 @@
  */
 package fr.solutec.servlet;
 
+import fr.solutec.model.Client;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -58,7 +59,20 @@ public class ProfilServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("WEB-INF/profilClient.jsp").forward(request, response);
+        try {
+            Client cli = (Client) request.getSession(true).getAttribute("client");
+            request.setAttribute("nomUser",cli.getNom());
+            request.setAttribute("prenomUser",cli.getPrenom());
+            request.setAttribute("adresseUser",cli.getAdresse());
+            request.setAttribute("mailUser",cli.getMail());
+            request.setAttribute("telUser",cli.getTel());
+            request.setAttribute("conseillerUser",cli.getIdConseiller());
+            request.setAttribute("photoUser",cli.getPhoto());
+            request.getRequestDispatcher("WEB-INF/profilClient.jsp").forward(request, response);
+        } catch (Exception e) {
+            PrintWriter out = response.getWriter();
+            out.println(e.getMessage());
+        }
         
     }
 

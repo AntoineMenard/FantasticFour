@@ -37,7 +37,7 @@ public class EnvoiMessageClientServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet EnvoiMessageClientServlet</title>");            
+            out.println("<title>Servlet EnvoiMessageClientServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet EnvoiMessageClientServlet at " + request.getContextPath() + "</h1>");
@@ -58,6 +58,7 @@ public class EnvoiMessageClientServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         request.getRequestDispatcher("WEB-INF/envoiMessageClient.jsp").forward(request, response);
     }
 
@@ -72,7 +73,9 @@ public class EnvoiMessageClientServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        request.getRequestDispatcher("WEB-INF/envoiMessageClient.jsp").forward(request, response);
+
     }
 
     /**
