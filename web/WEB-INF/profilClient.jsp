@@ -45,11 +45,11 @@
                                 <br><br>
                                 ${adresseUser}
                             </div>
-                            <div class="col-sm-2">
+                            <div class="col-sm-4">
                                 <br><br>
                                 mail : ${mailUser}
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <br><br>
                                  <button  type="button"  class="btn btn-default btn-sm ">éditer le profil</button>
                             </div>
