@@ -54,9 +54,6 @@
                             <a class="nav-link" href = "profil" >PROFIL</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="" >CLIENTS</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="messagerie" >MESSAGERIE</a>
                         </li>
                     </ul>
